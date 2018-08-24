@@ -53,9 +53,25 @@ resource "aws_subnet" "private-subnet" {
   }
 }
 
-resource "aws_ecs_cluster" "foo" {
-  name = "armstrong"
+resource "aws_ecs_cluster" "userpics" {
+  name = "userpics"
 }
+
+resource "aws_rds_cluster" "rds-aurora" {
+  cluster_identifier      = "aurora-cluster-demo"
+  engine                  = "aurora-mysql"
+  availability_zones      = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  database_name           = "mydb"
+  master_username         = "foo"
+  master_password         = "bar"
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
+
+  tags {
+    Name = "rds"
+  }
+}
+
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -73,11 +89,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "jumpbox" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
 
   tags {
-    Name = "web-node"
+    Name = "jumpbox"
   }
 }
