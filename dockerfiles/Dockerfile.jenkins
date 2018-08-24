@@ -1,0 +1,5 @@
+FROM centos:centos7
+
+RUN yum -y update
+RUN curl -o /etc/yum.repos.d/jenkins.repo  http://pkg.jenkins.io/redhat/jenkins.repo && \
+  rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
