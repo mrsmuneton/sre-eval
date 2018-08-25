@@ -1,0 +1,3 @@
+FROM composer
+RUN composer global require "laravel/installer"
+RUN composer create-project --prefer-dist laravel/laravel userimage

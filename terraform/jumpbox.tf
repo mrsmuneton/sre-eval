@@ -1,4 +1,6 @@
-# variable "vpc_id" {}
+provider "aws" {
+  region     = "us-west-2"
+}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -23,12 +25,4 @@ resource "aws_instance" "jumpbox" {
   tags {
     Name = "jumpbox"
   }
-}
-
-resource "aws_ecr_repository" "ecr-nginx" {
-  name = "nginx"
-}
-
-resource "aws_ecr_repository" "ecr-php-app" {
-  name = "php-app"
 }
