@@ -1,2 +1,4 @@
+userimage/storage/*
+
 *.tfstate
 */*.tfstate
