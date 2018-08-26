@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: php72.Dockerfile
+      dockerfile: Dockerfile
     working_dir: /var/www
     ports:
       - 9000:9000
@@ -15,7 +15,7 @@ services:
   web:
     build:
       context: ./
-      dockerfile: nginx.Dockerfile
+      dockerfile: Dockerfile.nginx
     working_dir: /var/www
     volumes_from:
       - app
