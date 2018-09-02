@@ -1,7 +1,3 @@
-provider "aws" {
-  region     = "us-west-2"
-}
-
 resource "aws_rds_cluster" "rds-aurora" {
   cluster_identifier      = "user-image"
   engine                  = "aurora-mysql"
